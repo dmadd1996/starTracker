@@ -13,13 +13,16 @@ xmlhttp.onreadystatechange = function () {
         let title = data['title']
         let url = data['url']
 
-        document.getElementById("wrapper-url").src = url;
+        document.getElementById("wrapper-url").style.backgroundImage = `url("${url}")`;
         document.getElementById("wrapper-title").innerHTML = title;
         document.getElementById('wrapper-copyright').innerHTML = copyright
         document.getElementById('wrapper-explanation').innerHTML = explanation
         document.getElementById('wrapper-hdurl').href = hdurl
     }
 }
+
+var about = document.getElementById('about')
+var aboutInfo = document.getElementById('aboutInfo')
 
 let queryUrl = "https://api.nasa.gov/planetary/apod?";
 let queryKey = "api_key=hgYbSzucAKEBVirb5pBcqp6I2boGGesw2D0GRhaZ";
@@ -28,3 +31,12 @@ let queryFull = queryUrl + queryKey;
 
 xmlhttp.open('GET', queryFull, true);
 xmlhttp.send();
+
+about.addEventListener('click', function(){
+    if(aboutInfo.style.display === "none") {
+        aboutInfo.style.display = 'block'
+    }else{
+        aboutInfo.style.display = 'none'
+    }
+    
+})
